@@ -1,161 +1,155 @@
-# LangLearn - Chinese Language Learning Platform
+# LangLearn - Language Learning App
 
-A modern mobile application for learning Chinese, built with React Native and Expo. This platform provides interactive lessons, vocabulary support, and cultural context to help users learn Chinese effectively.
+A modern language learning application built with React Native and Expo, with a focus on Chinese language learning.
 
 ## Features
 
-- Interactive reading lessons with stories and dialogues
-- Vocabulary support with pinyin, translations, and audio
-- Graded content by difficulty level
-- Progressive courses with structured lessons
-- Quizzes and exercises for comprehension
-- Audio narration for listening practice
-- Cultural and historical context
-- Offline support for lessons
-- Progress tracking and statistics
+- **Home Screen**: Welcome interface with app introduction
+- **Courses**: Browse and access language courses
+- **Stories**: Read and learn through stories
+- **Vocabulary**: Build your vocabulary with word lists
+- **Profile**: Track your progress and manage your account
+- **Speech Features**:
+  - Text-to-speech for pronunciation practice
+  - Voice feedback for language exercises
+  - Audio playback for vocabulary words
+  - Interactive speaking exercises
+  - **Chinese Language Support**:
+    - Native Chinese text-to-speech
+    - Pinyin pronunciation
+    - Character-by-character reading
+    - Meaning pronunciation
+    - Customizable speech rate for learning
 
 ## Tech Stack
 
-- Frontend: React Native, Expo, TypeScript
-- State Management: Redux Toolkit
-- UI Components: React Native Paper
-- Database: Firebase Realtime Database
-- Authentication: Firebase Auth
-- Storage: Firebase Storage
-- Audio: Expo AV
-- Testing: Jest, React Native Testing Library
+- React Native
+- Expo
+- TypeScript
+- React Navigation
+- Ionicons
+- Expo Speech (Text-to-Speech)
+- Chinese Language Support
 
-## Prerequisites
+## Project Structure
 
-- Node.js (v18 or later)
-- npm or yarn
-- Expo CLI (`npm install -g expo-cli`)
-- Expo Go app on your mobile device
-- iOS Simulator (for Mac users) or Android Emulator
+```text
+LangLearn/
+├── app/
+│   ├── components/
+│   │   ├── Navbar.tsx
+│   │   └── SpeechButton.tsx
+│   ├── screens/
+│   │   ├── HomeScreen.tsx
+│   │   ├── CoursesScreen.tsx
+│   │   ├── StoriesScreen.tsx
+│   │   ├── VocabularyScreen.tsx
+│   │   └── ProfileScreen.tsx
+│   └── types/
+│       └── navigation.ts
+├── App.tsx
+├── tsconfig.json
+└── package.json
+```
 
 ## Getting Started
 
+### Prerequisites
+
+- Node.js (v14 or later)
+- npm or yarn
+- Expo CLI
+- Expo Go app on your mobile device
+
+### Installation
+
 1. Clone the repository:
 
-   ```bash
-   git clone https://github.com/spouv1234/LangLearn.git
-   cd LangLearn
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. Set up environment variables:
-   - Create a `.env` file in the root directory
-   - Add required environment variables (see `.env.example`)
-
-4. Start the development server:
-
-   ```bash
-   npx expo start
-   ```
-
-5. Run the app:
-   - Scan the QR code with Expo Go app (Android) or Camera app (iOS)
-   - Press 'a' to open on Android emulator
-   - Press 'i' to open on iOS simulator
-   - Press 'w' to open in web browser
-
-## Development Guidelines
-
-### Code Structure
-
-```text
-langlearn/
-├── assets/                # Static assets (images, fonts, etc.)
-├── src/
-│   ├── components/        # Reusable UI components
-│   ├── screens/          # App screens
-│   ├── navigation/       # Navigation configuration
-│   ├── store/            # Redux store and slices
-│   ├── services/         # API and external services
-│   ├── utils/            # Helper functions
-│   └── constants/        # App constants
-├── .expo/                # Expo configuration (do not commit)
-└── app.json             # Expo app configuration
+```bash
+git clone https://github.com/yourusername/LangLearn.git
+cd LangLearn
 ```
 
-### Development Workflow
-
-1. Create a new branch for your feature:
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-2. Make your changes and commit them:
-
-   ```bash
-   git add .
-   git commit -m "Description of your changes"
-   ```
-
-3. Push your changes:
-
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-4. Create a Pull Request on GitHub
-
-### Testing
-
-Run tests:
+1. Install dependencies:
 
 ```bash
-npm test
-# or
-yarn test
+npm install
 ```
 
-### Building for Production
+1. Start the development server:
 
-1. Configure app.json with your app details
+```bash
+npx expo start
+```
 
-2. Build for specific platforms:
+1. Run the app:
 
-   ```bash
-   # For Android
-   npx expo build:android
-   
-   # For iOS
-   npx expo build:ios
-   ```
+- Press 'w' to open in web browser
+- Press 'a' to open in Android emulator
+- Press 'i' to open in iOS simulator
+- Scan the QR code with your phone's Expo Go app
 
-## Troubleshooting
+## TypeScript Configuration
 
-### Common Issues
+The project uses TypeScript with the following configuration:
 
-1. Metro Bundler not starting:
-   - Kill all Node processes: `taskkill /F /IM node.exe`
-   - Clear Metro cache: `npx expo start --clear`
+- Extends from Expo's base TypeScript configuration
+- Strict type checking enabled
+- Path aliases configured for cleaner imports
+- React Native specific type definitions included
 
-2. App not updating:
-   - Press 'r' in the terminal to reload
-   - Press 'm' to open the developer menu
-   - Select "Reload" from the menu
+## Navigation
 
-3. Expo Go connection issues:
-   - Ensure your device and computer are on the same network
-   - Try using the Expo Go app's QR scanner instead of the camera
+The app uses React Navigation with:
+
+- Bottom Tab Navigation for main app sections
+- Stack Navigation for nested screens
+- Type-safe navigation using TypeScript
+
+## Styling
+
+- Uses React Native's StyleSheet
+- Consistent color scheme throughout the app
+- Responsive layouts for different screen sizes
+
+## Development
+
+### Code Quality
+
+- TypeScript for type safety
+- ESLint for code linting
+- Prettier for code formatting
+
+### Speech Features
+
+The app includes text-to-speech capabilities using Expo Speech:
+
+- Pronunciation practice for vocabulary words
+- Audio playback for stories and lessons
+- Voice feedback for exercises
+- Multiple language support
+- Customizable speech rate and pitch
+- **Chinese Language Features**:
+  - Native Chinese text-to-speech
+  - Pinyin pronunciation support
+  - Character-by-character reading
+  - Meaning pronunciation
+  - Optimized speech rate for learning
+  - Integrated pinyin display
+
+### Debugging
+
+- Press 'j' to open the debugger
+- Press 'r' to reload the app
+- Press 'm' to toggle the developer menu
 
 ## Contributing
 
 1. Fork the repository
-2. Create your feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
+1. Create your feature branch
+1. Commit your changes
+1. Push to the branch
+1. Create a new Pull Request
 
 ## License
 
