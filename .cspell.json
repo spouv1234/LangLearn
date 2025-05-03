@@ -2,16 +2,35 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "vercel",
+    "mobileprovision",
+    "pbxuser",
+    "perspectivev",
+    "xcuserdata",
+    "xccheckout",
+    "hmap",
+    "xcuserstate",
+    "xcworkspace",
+    "hprof",
+    "langlearn",
+    "taskkill",
     "igncr",
     "wslpath"
   ],
   "ignorePaths": [
-    "node_modules/**",
     "**/node_modules/**",
-    "**/coverage/**",
-    "**/.git/**",
     "**/dist/**",
     "**/build/**",
-    "**/.expo/**"
+    "**/.expo/**",
+    "**/coverage/**",
+    "**/AppData/Local/Temp/**"
+  ],
+  "dictionaries": [
+    "typescript",
+    "node",
+    "npm",
+    "react",
+    "react-native",
+    "expo"
   ]
 } 
