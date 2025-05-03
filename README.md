@@ -14,12 +14,15 @@ A modern language learning application built with React Native and Expo, with a 
   - Voice feedback for language exercises
   - Audio playback for vocabulary words
   - Interactive speaking exercises
+  - Speech recognition for pronunciation practice
   - **Chinese Language Support**:
     - Native Chinese text-to-speech
     - Pinyin pronunciation
     - Character-by-character reading
     - Meaning pronunciation
     - Customizable speech rate for learning
+    - Chinese-specific speech recognition
+    - Pinyin input support
 
 ## Tech Stack
 
@@ -29,6 +32,7 @@ A modern language learning application built with React Native and Expo, with a 
 - React Navigation
 - Ionicons
 - Expo Speech (Text-to-Speech)
+- Expo Speech Recognition
 - Chinese Language Support
 
 ## Project Structure
@@ -38,15 +42,18 @@ LangLearn/
 ├── app/
 │   ├── components/
 │   │   ├── Navbar.tsx
-│   │   └── SpeechButton.tsx
+│   │   ├── SpeechButton.tsx
+│   │   └── ChineseSpeechButton.tsx
 │   ├── screens/
 │   │   ├── HomeScreen.tsx
 │   │   ├── CoursesScreen.tsx
 │   │   ├── StoriesScreen.tsx
 │   │   ├── VocabularyScreen.tsx
 │   │   └── ProfileScreen.tsx
-│   └── types/
-│       └── navigation.ts
+│   ├── types/
+│   │   └── navigation.ts
+│   └── utils/
+│       └── speech.ts
 ├── App.tsx
 ├── tsconfig.json
 └── package.json
@@ -97,6 +104,29 @@ The project uses TypeScript with the following configuration:
 - Strict type checking enabled
 - Path aliases configured for cleaner imports
 - React Native specific type definitions included
+- Latest ECMAScript features enabled (ES2022)
+- Force consistent file name casing for cross-platform compatibility
+- Module resolution set to Node.js style
+- JSON module imports enabled
+- JSX support for React Native
+- Strict null checks and type checking
+
+## Speech Recognition Features
+
+The app includes comprehensive speech recognition capabilities:
+
+- **General Speech Recognition**:
+  - Real-time speech-to-text conversion
+  - Multiple language support
+  - Configurable recognition settings
+  - Error handling and feedback
+
+- **Chinese-Specific Features**:
+  - Pinyin pronunciation recognition
+  - Character recognition
+  - Tone detection
+  - Custom Chinese language models
+  - Integration with Chinese text-to-speech
 
 ## Navigation
 
@@ -145,11 +175,7 @@ The app includes text-to-speech capabilities using Expo Speech:
 
 ## Contributing
 
-1. Fork the repository
-1. Create your feature branch
-1. Commit your changes
-1. Push to the branch
-1. Create a new Pull Request
+Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
