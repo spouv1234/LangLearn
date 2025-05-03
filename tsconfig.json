@@ -20,7 +20,9 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "target": "ESNext",
-    "types": ["node", "expo-module-scripts"]
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "**/*.ts",
