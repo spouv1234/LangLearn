@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity, Image } from 'react-native';
 import { useRoute, useNavigation } from '@react-navigation/native';
-import { CourseDetailScreenProps, CourseDetailScreenRouteProp } from '../types/navigation';
+import { CourseDetailScreenProps } from '../types/navigation';
 
 interface Chapter {
   id: string;
@@ -22,7 +22,7 @@ interface Course {
 export default function CourseDetailScreen() {
   const [course, setCourse] = useState<Course | null>(null);
   const [loading, setLoading] = useState(true);
-  const route = useRoute<CourseDetailScreenRouteProp>();
+  const route = useRoute<CourseDetailScreenProps['route']>();
   const navigation = useNavigation<CourseDetailScreenProps['navigation']>();
 
   useEffect(() => {
