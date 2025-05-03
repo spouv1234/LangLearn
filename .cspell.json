@@ -1,0 +1,17 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "igncr",
+    "wslpath"
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "**/node_modules/**",
+    "**/coverage/**",
+    "**/.git/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.expo/**"
+  ]
+} 
