@@ -1,42 +1,61 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useColorScheme } from 'react-native';
-import { lightTheme, darkTheme } from '../utils/theme';
+import React, { createContext, useContext, useState } from 'react';
 
-type ThemeContextType = {
-  isDarkMode: boolean;
+export type Theme = 'light' | 'dark';
+
+interface ThemeContextType {
+  theme: Theme;
   toggleTheme: () => void;
-  theme: typeof lightTheme;
+  colors: {
+    background: {
+      light: string;
+      dark: string;
+    };
+    text: {
+      light: string;
+      dark: string;
+    };
+    primary: {
+      light: string;
+      dark: string;
+    };
+  };
+}
+
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
+
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within a ThemeProvider');
+  }
+  return context;
 };
 
-const ThemeContext = createContext<ThemeContextType>({
-  isDarkMode: false,
-  toggleTheme: () => {},
-  theme: lightTheme,
-});
-
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const systemColorScheme = useColorScheme();
-  const [isDarkMode, setIsDarkMode] = useState(systemColorScheme === 'dark');
-
-  useEffect(() => {
-    setIsDarkMode(systemColorScheme === 'dark');
-  }, [systemColorScheme]);
+  const [theme, setTheme] = useState<Theme>('light');
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
+  };
+
+  const colors = {
+    background: {
+      light: '#FFFFFF',
+      dark: '#121212',
+    },
+    text: {
+      light: '#000000',
+      dark: '#FFFFFF',
+    },
+    primary: {
+      light: '#6200EE',
+      dark: '#BB86FC',
+    },
   };
 
   return (
-    <ThemeContext.Provider
-      value={{
-        isDarkMode,
-        toggleTheme,
-        theme: isDarkMode ? darkTheme : lightTheme,
-      }}
-    >
+    <ThemeContext.Provider value={{ theme, toggleTheme, colors }}>
       {children}
     </ThemeContext.Provider>
   );
-};
-
-export const useTheme = () => useContext(ThemeContext); 
+}; 

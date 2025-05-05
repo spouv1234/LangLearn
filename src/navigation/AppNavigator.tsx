@@ -1,65 +1,69 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-// Import screens (we'll create these next)
+import { Language } from '../types/language';
 import LanguageSelectionScreen from '../screens/LanguageSelectionScreen';
-import HomeScreen from '../screens/HomeScreen';
+import MainScreen from '../screens/MainScreen';
 import LessonScreen from '../screens/LessonScreen';
 import PracticeScreen from '../screens/PracticeScreen';
 import FlashcardScreen from '../screens/FlashcardScreen';
+import StatsScreen from '../screens/StatsScreen';
+import SettingsScreen from '../screens/SettingsScreen';
 
 export type RootStackParamList = {
   LanguageSelection: undefined;
-  Home: undefined;
+  Main: { language: Language };
   Lesson: { lessonId: string };
   Practice: { practiceId: string };
-  Flashcards: undefined;
+  Flashcards: { languageId: string };
+  Stats: undefined;
+  Settings: undefined;
 };
 
-const Stack = createNativeStackNavigator<RootStackParamList>();
+export const Stack = createNativeStackNavigator<RootStackParamList>();
 
-export function AppNavigator() {
+export default function AppNavigator() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator
-        initialRouteName="LanguageSelection"
-        screenOptions={{
-          headerStyle: {
-            backgroundColor: '#4A90E2',
-          },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
-        }}
-      >
-        <Stack.Screen 
-          name="LanguageSelection" 
-          component={LanguageSelectionScreen} 
-          options={{ title: 'LangLearn' }} 
-        />
-        <Stack.Screen 
-          name="Home" 
-          component={HomeScreen} 
-          options={{ title: 'LangLearn' }} 
-        />
-        <Stack.Screen 
-          name="Lesson" 
-          component={LessonScreen} 
-          options={{ title: 'Lesson' }} 
-        />
-        <Stack.Screen 
-          name="Practice" 
-          component={PracticeScreen} 
-          options={{ title: 'Practice' }} 
-        />
-        <Stack.Screen 
-          name="Flashcards" 
-          component={FlashcardScreen} 
-          options={{ title: 'Flashcards' }} 
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator initialRouteName="LanguageSelection">
+      <Stack.Screen
+        name="LanguageSelection"
+        component={LanguageSelectionScreen}
+        options={{ title: 'Select Language' }}
+      />
+      <Stack.Screen
+        name="Main"
+        component={MainScreen}
+        options={({ route }) => ({
+          title: `${route.params.language.flag} ${route.params.language.name}`,
+        })}
+      />
+      <Stack.Screen
+        name="Lesson"
+        component={LessonScreen}
+        options={({ route }) => ({
+          title: `Lesson ${route.params.lessonId}`,
+        })}
+      />
+      <Stack.Screen
+        name="Practice"
+        component={PracticeScreen}
+        options={({ route }) => ({
+          title: `Practice ${route.params.practiceId}`,
+        })}
+      />
+      <Stack.Screen
+        name="Flashcards"
+        component={FlashcardScreen}
+        options={{ title: 'Flashcards' }}
+      />
+      <Stack.Screen
+        name="Stats"
+        component={StatsScreen}
+        options={{ title: 'Your Progress' }}
+      />
+      <Stack.Screen
+        name="Settings"
+        component={SettingsScreen}
+        options={{ title: 'Settings' }}
+      />
+    </Stack.Navigator>
   );
 } 
