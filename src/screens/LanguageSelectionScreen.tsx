@@ -1,3 +1,11 @@
+/**
+ * LanguageSelectionScreen Component
+ * 
+ * This is the main entry point for users to select their desired learning language.
+ * Currently, only Chinese is fully implemented, with other languages marked as coming soon.
+ * The screen also provides access to user statistics and app settings through header buttons.
+ */
+
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
 import { Button, Text, IconButton } from 'react-native-paper';
@@ -7,11 +15,17 @@ import { useTheme } from '../context/ThemeContext';
 import { LANGUAGES } from '../types/language';
 import { SPACING } from '../design/designSystem';
 
+// Props type definition using React Navigation's typing system
 type Props = NativeStackScreenProps<RootStackParamList, 'LanguageSelection'>;
 
 export default function LanguageSelectionScreen({ navigation }: Props) {
+  // Get theme colors and current theme mode from context
   const { colors, theme } = useTheme();
 
+  /**
+   * Handles the language selection action
+   * Currently only Chinese (zh) is enabled, other languages are disabled
+   */
   const handleLanguageSelect = (languageId: string) => {
     if (languageId === 'zh') {
       navigation.navigate('Main', { language: LANGUAGES[languageId] });
@@ -23,6 +37,7 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
       style={[styles.container, { backgroundColor: colors.background[theme] }]}
       contentContainerStyle={styles.contentContainer}
     >
+      {/* Header section with title and navigation buttons */}
       <View style={styles.header}>
         <Text style={[styles.title, { color: colors.text[theme] }]}>
           Select a Language to Learn
@@ -42,6 +57,8 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
           />
         </View>
       </View>
+
+      {/* Language selection buttons */}
       <View style={styles.buttonContainer}>
         {Object.entries(LANGUAGES).map(([id, language]) => (
           <Button
@@ -63,6 +80,8 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
           </Button>
         ))}
       </View>
+
+      {/* Footer note about upcoming languages */}
       <Text style={[styles.note, { color: colors.text[theme] }]}>
         More languages coming soon! Stay tuned for updates.
       </Text>
@@ -70,6 +89,7 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
   );
 }
 
+// Styles for layout and appearance
 const styles = StyleSheet.create({
   container: {
     flex: 1,
