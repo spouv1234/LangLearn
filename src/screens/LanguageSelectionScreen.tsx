@@ -39,8 +39,8 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
     >
       {/* Header section with title and navigation buttons */}
       <View style={styles.header}>
-        <Text style={[styles.title, { color: colors.text[theme] }]}>
-          Select a Language to Learn
+        <Text style={[styles.title, { color: '#000' }]}>
+          Choose Your Language
         </Text>
         <View style={styles.headerButtons}>
           <IconButton
@@ -48,12 +48,14 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
             size={24}
             onPress={() => navigation.navigate('Stats')}
             style={styles.headerButton}
+            iconColor="#000"
           />
           <IconButton
             icon="cog"
             size={24}
             onPress={() => navigation.navigate('Settings')}
             style={styles.headerButton}
+            iconColor="#000"
           />
         </View>
       </View>
@@ -73,6 +75,7 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
             labelStyle={[
               styles.buttonLabel,
               id !== 'zh' && styles.disabledLabel,
+              { color: '#000' }
             ]}
           >
             {`${language.flag} ${language.name}`}
@@ -82,7 +85,7 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
       </View>
 
       {/* Footer note about upcoming languages */}
-      <Text style={[styles.note, { color: colors.text[theme] }]}>
+      <Text style={[styles.note, { color: '#000' }]}>
         More languages coming soon! Stay tuned for updates.
       </Text>
     </ScrollView>
@@ -115,6 +118,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     flex: 1,
   },
+  subtitle: {
+    fontSize: 16,
+    textAlign: 'center',
+    flex: 1,
+  },
   buttonContainer: {
     gap: SPACING.md,
   },
@@ -135,5 +143,13 @@ const styles = StyleSheet.create({
     marginTop: SPACING.xl,
     fontStyle: 'italic',
     opacity: 0.8,
+  },
+  languageName: {
+    fontSize: 16,
+  },
+  comingSoon: {
+    fontSize: 12,
+    fontStyle: 'italic',
+    opacity: 0.5,
   },
 }); 
