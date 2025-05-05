@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet, ScrollView } from 'react-native';
-import { Button, Text } from 'react-native-paper';
+import { Button, Text, IconButton } from 'react-native-paper';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import { useTheme } from '../context/ThemeContext';
@@ -23,9 +23,25 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
       style={[styles.container, { backgroundColor: colors.background[theme] }]}
       contentContainerStyle={styles.contentContainer}
     >
-      <Text style={[styles.title, { color: colors.text[theme] }]}>
-        Select a Language to Learn
-      </Text>
+      <View style={styles.header}>
+        <Text style={[styles.title, { color: colors.text[theme] }]}>
+          Select a Language to Learn
+        </Text>
+        <View style={styles.headerButtons}>
+          <IconButton
+            icon="chart-line"
+            size={24}
+            onPress={() => navigation.navigate('Stats')}
+            style={styles.headerButton}
+          />
+          <IconButton
+            icon="cog"
+            size={24}
+            onPress={() => navigation.navigate('Settings')}
+            style={styles.headerButton}
+          />
+        </View>
+      </View>
       <View style={styles.buttonContainer}>
         {Object.entries(LANGUAGES).map(([id, language]) => (
           <Button
@@ -61,11 +77,23 @@ const styles = StyleSheet.create({
   contentContainer: {
     padding: SPACING.lg,
   },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: SPACING.xl,
+  },
+  headerButtons: {
+    flexDirection: 'row',
+  },
+  headerButton: {
+    margin: 0,
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
-    marginBottom: SPACING.xl,
+    flex: 1,
   },
   buttonContainer: {
     gap: SPACING.md,
@@ -74,13 +102,13 @@ const styles = StyleSheet.create({
     marginVertical: SPACING.sm,
   },
   disabledButton: {
-    opacity: 0.3,
+    opacity: 0.7,
   },
   buttonLabel: {
     fontSize: 16,
   },
   disabledLabel: {
-    opacity: 0.9,
+    opacity: 0.5,
   },
   note: {
     textAlign: 'center',
