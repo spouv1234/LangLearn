@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Button, Text, IconButton } from 'react-native-paper';
+import { Button, Text } from 'react-native-paper';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
 import { useTheme } from '../context/ThemeContext';
@@ -18,20 +18,6 @@ export default function MainScreen({ route, navigation }: Props) {
         <Text style={[styles.title, { color: colors.text[theme] }]}>
           {`${language.flag} ${language.name}`}
         </Text>
-        <View style={styles.headerButtons}>
-          <IconButton
-            icon="chart-line"
-            size={24}
-            onPress={() => navigation.navigate('Stats')}
-            style={styles.headerButton}
-          />
-          <IconButton
-            icon="cog"
-            size={24}
-            onPress={() => navigation.navigate('Settings')}
-            style={styles.headerButton}
-          />
-        </View>
       </View>
       <View style={styles.buttonContainer}>
         <Button
@@ -66,16 +52,7 @@ const styles = StyleSheet.create({
     padding: SPACING.lg,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
     marginBottom: SPACING.xl,
-  },
-  headerButtons: {
-    flexDirection: 'row',
-  },
-  headerButton: {
-    margin: 0,
   },
   title: {
     fontSize: 24,
