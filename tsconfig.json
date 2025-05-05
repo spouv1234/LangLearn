@@ -3,21 +3,24 @@
   "compilerOptions": {
     "strict": true,
     "baseUrl": ".",
-    "module": "ESNext",
-    "forceConsistentCasingInFileNames": true,
     "paths": {
-      "@/*": [
-        "./app/*"
+      "*": [
+        "src/*"
       ]
     },
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "jsx": "react-native",
+    "target": "esnext",
     "lib": [
-      "ES2019",
-      "ES2020",
-      "ES2021",
-      "ES2022",
-      "DOM",
-      "DOM.Iterable"
-    ]
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "**/*.ts",

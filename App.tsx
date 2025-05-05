@@ -1,20 +1,23 @@
-import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import AppNavigator from './app/components/Navbar';
+import { StatusBar } from 'expo-status-bar';
+import { Provider as PaperProvider } from 'react-native-paper';
+import { ThemeProvider } from './src/context/ThemeContext';
+import { AppNavigator } from './src/navigation/AppNavigator';
+import { useTheme } from './src/context/ThemeContext';
 
-const Stack = createNativeStackNavigator();
+function AppContent() {
+  const { theme } = useTheme();
+  return (
+    <PaperProvider theme={theme}>
+      <StatusBar style={theme.dark ? 'light' : 'dark'} />
+      <AppNavigator />
+    </PaperProvider>
+  );
+}
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Main"
-          component={AppNavigator}
-          options={{ headerShown: false }}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 } 
