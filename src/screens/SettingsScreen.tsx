@@ -77,6 +77,11 @@ export default function SettingsScreen({ navigation }: Props) {
           About
         </List.Subheader>
         <List.Item
+          title="About Developer"
+          left={props => <List.Icon {...props} icon="account" />}
+          onPress={() => navigation.navigate('About')}
+        />
+        <List.Item
           title="Rate App"
           left={props => <List.Icon {...props} icon="star" />}
         />

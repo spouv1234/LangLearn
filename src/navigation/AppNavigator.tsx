@@ -7,6 +7,7 @@ import PracticeScreen from '../screens/PracticeScreen';
 import FlashcardScreen from '../screens/FlashcardScreen';
 import StatsScreen from '../screens/StatsScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import AboutScreen from '../screens/AboutScreen';
 
 export type RootStackParamList = {
   LanguageSelection: undefined;
@@ -16,6 +17,7 @@ export type RootStackParamList = {
   Flashcards: { languageId: string };
   Stats: undefined;
   Settings: undefined;
+  About: undefined;
 };
 
 export const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -63,6 +65,11 @@ export default function AppNavigator() {
         name="Settings"
         component={SettingsScreen}
         options={{ title: 'Settings' }}
+      />
+      <Stack.Screen
+        name="About"
+        component={AboutScreen}
+        options={{ title: 'About' }}
       />
     </Stack.Navigator>
   );

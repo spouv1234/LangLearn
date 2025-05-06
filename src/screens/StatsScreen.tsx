@@ -43,13 +43,13 @@ export default function StatsScreen({ navigation }: Props) {
       style={[styles.container, { backgroundColor: colors.background[theme] }]}
       contentContainerStyle={styles.contentContainer}
     >
-      <Text style={[styles.title, { color: colors.text[theme] }]}>
+      <Text style={[styles.title, { color: theme === 'dark' ? '#E0E0E0' : '#1A1A1A' }]}>
         Your Learning Progress
       </Text>
 
-      <Card style={styles.card}>
+      <Card style={[styles.card, { backgroundColor: theme === 'dark' ? '#2D2D2D' : '#F5F5F5' }]}>
         <Card.Content>
-          <Text style={[styles.cardTitle, { color: colors.text[theme] }]}>
+          <Text style={[styles.cardTitle, { color: theme === 'dark' ? '#E0E0E0' : '#1A1A1A' }]}>
             Overall Progress
           </Text>
           <ProgressBar
@@ -64,9 +64,9 @@ export default function StatsScreen({ navigation }: Props) {
         if (!stats) return null;
 
         return (
-          <Card key={id} style={styles.card}>
+          <Card key={id} style={[styles.card, { backgroundColor: theme === 'dark' ? '#2D2D2D' : '#F5F5F5' }]}>
             <Card.Content>
-              <Text style={[styles.cardTitle, { color: colors.text[theme] }]}>
+              <Text style={[styles.cardTitle, { color: theme === 'dark' ? '#E0E0E0' : '#1A1A1A' }]}>
                 {`${language.flag} ${language.name}`}
               </Text>
               <ProgressBar
@@ -74,20 +74,21 @@ export default function StatsScreen({ navigation }: Props) {
                 label="Lessons Completed"
               />
               <View style={styles.statsRow}>
-                <Text style={[styles.stat, { color: colors.text[theme] }]}>
+                <Text style={[styles.stat, { color: theme === 'dark' ? '#E0E0E0' : '#1A1A1A' }]}>
                   Mastered Words: {stats.masteredWords}
                 </Text>
-                <Text style={[styles.stat, { color: colors.text[theme] }]}>
+                <Text style={[styles.stat, { color: theme === 'dark' ? '#E0E0E0' : '#1A1A1A' }]}>
                   Difficult Words: {stats.difficultWords}
                 </Text>
               </View>
-              <Text style={[styles.lastStudied, { color: colors.text[theme] }]}>
+              <Text style={[styles.lastStudied, { color: theme === 'dark' ? '#E0E0E0' : '#1A1A1A' }]}>
                 Last Studied: {stats.lastStudied}
               </Text>
               <Button
                 mode="contained"
                 onPress={() => navigation.navigate('Main', { language })}
-                style={styles.button}
+                style={[styles.button, { backgroundColor: theme === 'dark' ? '#2D2D2D' : '#F5F5F5' }]}
+                labelStyle={{ color: theme === 'dark' ? '#E0E0E0' : '#1A1A1A' }}
               >
                 Continue Learning
               </Button>

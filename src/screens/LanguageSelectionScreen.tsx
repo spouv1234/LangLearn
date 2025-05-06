@@ -39,7 +39,7 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
     >
       {/* Header section with title and navigation buttons */}
       <View style={styles.header}>
-        <Text style={[styles.title, { color: '#000' }]}>
+        <Text style={[styles.title, { color: theme === 'dark' ? '#E0E0E0' : '#1A1A1A' }]}>
           Choose Your Language
         </Text>
         <View style={styles.headerButtons}>
@@ -48,14 +48,14 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
             size={24}
             onPress={() => navigation.navigate('Stats')}
             style={styles.headerButton}
-            iconColor="#000"
+            iconColor={theme === 'dark' ? '#E0E0E0' : '#1A1A1A'}
           />
           <IconButton
             icon="cog"
             size={24}
             onPress={() => navigation.navigate('Settings')}
             style={styles.headerButton}
-            iconColor="#000"
+            iconColor={theme === 'dark' ? '#E0E0E0' : '#1A1A1A'}
           />
         </View>
       </View>
@@ -71,11 +71,12 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
             style={[
               styles.button,
               id !== 'zh' && styles.disabledButton,
+              { backgroundColor: theme === 'dark' ? '#2D2D2D' : '#F5F5F5' }
             ]}
             labelStyle={[
               styles.buttonLabel,
               id !== 'zh' && styles.disabledLabel,
-              { color: '#000' }
+              { color: theme === 'dark' ? '#E0E0E0' : '#1A1A1A' }
             ]}
           >
             {`${language.flag} ${language.name}`}
@@ -85,7 +86,7 @@ export default function LanguageSelectionScreen({ navigation }: Props) {
       </View>
 
       {/* Footer note about upcoming languages */}
-      <Text style={[styles.note, { color: '#000' }]}>
+      <Text style={[styles.note, { color: theme === 'dark' ? '#E0E0E0' : '#1A1A1A' }]}>
         More languages coming soon! Stay tuned for updates.
       </Text>
     </ScrollView>
